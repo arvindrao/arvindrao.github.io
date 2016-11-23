@@ -1,0 +1,520 @@
+<html>
+<head>
+<meta name="description" content="A photo album with page-flip effects created using CSS 3D transforms." />
+<meta name="keywords" content="html5,css3,css 3d,flip page,page flip" />
+<title>Globetrekking</title>
+<link rel="icon" type="image/png" href="images/favicon.png" />
+<link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+<link href='http://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="styles/globetrekstyle.css" />
+
+<script type="text/javascript" src="scripts/jquery-1.6.3.min.js"></script>
+<script type="text/javascript" src="scripts/modernizr.custom.27572.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//Always the current right page
+	var currPage=0;
+
+	//flag indicates whether an image has been zoomed
+	var zoomed=false;
+
+	var numOfPages=$("#book > page").size();
+	
+	var i;
+	var x;
+	
+	for (i=1;i<=numOfPages;i++){
+		//Set the id with a page number, odd for left pages and even for right pages
+		x=i-1;
+		$("page:eq("+x+")").attr("id","page"+i);
+			
+		//set the z-index for this page
+		$("#page"+i).css("z-index",function(){
+				if (i%2 != 0){
+					//all left pages have the same z-index
+					//because when a left page is open, the default html layering is ok
+					return numOfPages;
+				}
+				else{
+					//earlier right page has higher z-index
+					//because when a right page is open, the opposite of default html layering is required
+					return numOfPages-i;
+				}
+			}
+		);
+	}
+
+	$("frontcover").click(function(){
+		$(this).addClass("rightPageFlipped");
+		$("#page1").addClass("leftPageFlapped");
+		currPage=2;
+
+		//show the zoom button for regular pages
+		$("#zoomIn").css("display","block");
+
+
+	});
+
+	$("page.rightPage").click(function(){
+		//flip the page if the image was not zoomed
+		if (!zoomed){
+			$(this).addClass("rightPageFlipped");
+			var nextPage=currPage+1;
+			$("#page"+nextPage).addClass("leftPageFlapped");
+			currPage+=2;
+
+			if (currPage>numOfPages){
+				//hide the zoom button for regular pages
+				$("#zoomIn").css("display","none");
+			}
+		}
+	});
+
+	$("page.leftPage").click(function(){
+		//flip the page if the image was not zoomed
+		if (!zoomed){
+			$(this).removeClass("leftPageFlapped");
+			var prevPage=currPage-2;
+			$("#page"+prevPage).removeClass("rightPageFlipped");
+			currPage-=2;
+			if (currPage==0){
+				//hide the zoom button for front page
+				$("#zoomIn").css("display","none");
+			}
+			else{
+				$("#zoomIn").css("display","block");
+			}
+
+		}
+
+	});
+
+	$("backcover").click(function(){
+		for (var j=numOfPages;j>=1;j--){
+			$("#page"+j).removeClass("leftPageFlapped");
+			var ind=j-1;
+			$("#page"+ind).removeClass("rightPageFlipped");
+
+		};
+		currPage=0;
+		$("#zoomIn").css("display","none");
+		$("#zoomOut").css("display","none");
+	});
+
+	$("#zoomIn").click(function(){
+		zoomed=true;
+		$("#book").addClass("moved");
+		prevPage=currPage-1;
+		$("#page"+currPage).removeClass("unzoomed").addClass("zoomed");
+
+		$("#zoomIn").css("display","none");
+		$("#zoomOut").css("display","block");
+
+	});
+
+	$("#zoomOut").click(function(){
+		zoomed=false;
+		$("#page"+currPage).removeClass("zoomed").addClass("unzoomed");
+		$("#book").removeClass("moved");
+
+		$("#zoomOut").css("display","none");
+		$("#zoomIn").css("display","block");
+
+	});
+
+});
+</script>
+
+<script type="text/javascript">
+  //set a custom variable based on whether this browser supports 3D transforms
+  //used for google analytics tracking
+  var cssSupport=$("html").hasClass("no-csstransforms3d")?"2D":"3D";
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25201537-2']);
+  _gaq.push(['_setCustomVar',1,'CSS_Support',cssSupport,3]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+
+<body >
+
+<div id="help1a" class="helpPageA">
+<p><b>Click anywhere on the blue cover to open this photo album.</b></p>
+<p><b>Click anywhere on the right page to move forward and the left page to move back.</b></p>
+<p><b>Hit the "Zoom" button for a cool effect!</b></p>
+<hr>
+<p>The page-flip effect is done with CSS 3D transforms!</p>
+<hr>
+<p>Licensed under a Creative Commons Attribution 3.0 Unported License.</p>
+<p>You may contact me at <b>tech@arvindrao.in</b></p>
+</div>
+<div id="help1b" class="helpPageB">
+<p>This page uses JQuery, Modernizr and Google web fonts.</p>
+</div>
+
+<div id="help2a" class="helpPageA">
+<p><b>Click anywhere on the blue cover to open this photo album.</b></p>
+<p><b>Click anywhere on the right page to move forward and the left page to move back.</b></p>
+<p><b>Hit the "Zoom" button for a cool effect!</b></p>
+<hr>
+<p>This is a 2D version of the page because your browser doesn't support CSS 3D transforms. Try using Chrome or Safari.</p>
+<hr>
+<p>Licensed under a Creative Commons Attribution 3.0 Unported License.</p>
+<p>You may contact me at <b>tech@arvindrao.in</b></p>
+</div>
+<div id="help2b" class="helpPageB">
+<p>This page uses JQuery, Modernizr and Google web fonts.</p>
+</div>
+
+<div id="book">
+
+<frontcover id="page0">
+<h3>GLOBETREKKING</h3>
+<p>by Arvind Rao</p>
+</frontcover>
+
+<page class="leftPage">
+<picinfo>
+<h3>Toronto, Canada</h3>
+<p>Toronto is Canada's economic capital. It is located on the northwestern shore of Lake Ontario.</p>
+<p>The original name of the city, "Taronto", referred to a channel of water between Lake Simcoe and Lake Couchiching.</p>
+<p>This is the CN Tower seen from the Toronto Islands.</p>
+<br>
+<p>June 2005</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Toronto.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Chicago, USA</h3>
+<p>Chicago is the largest city in the US state of Illinois. It is located at the southwestern tip of Lake Michigan.</p>
+<p>It is home to major financial and futures exchanges such as the CME.</p>
+<p>The name "Chicago" is derived from original Native American word "shikaakwa", or "wild onion".</p>
+<p>This is a view of the marina seen from Shedd Aquarium.</p>
+<br>
+<p>September 2006</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Chicago.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>St. Louis, USA</h3>
+<p>St. Louis is located on the eastern border of the state of Missouri.</p>
+<p>The city owes its name to its French origins as the area became a French settlement in the late 1600s.</p>
+<p>This is the Gateway Arch in Jefferson Memorial Park.</p>
+<br>
+<p>September 2006</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/StLouis.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Hong Kong</h3>
+<p>Hong Kong is located on the southeastern coast of China, on the edge of the South China Sea.</p>
+<p>This former fishing village is now one of the leading financial centers of the world.</p>
+<p>The city's English name is derived from the Chinese characters, "Heung" and "Gong", roughly translated as "Fragrant Harbour".</p>
+<p>This is the view from Victoria Peak.</p>
+<br>
+<p>December 2010</p>
+<p>Sony Ericsson Vivaz U5i</p>
+</picinfo>
+</page>
+<page class="rightPage">
+<img src="images/HongKong.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Macau</h3>
+<p>Macau is located southwest of Hong Kong and is a special administrative region of China.</p>
+<p>A former Portugese colony, it is now the world's largest gambling destination.</p>
+<p>The name Macau is believed to be derived from the A-Ma Temple dedicated to the goddess Matsu.</p>
+<p>This is the Casino Lisboa.</p>
+<br>
+<p>October 2007</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Macau.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Tokyo, Japan</h3>
+<p>Tokyo is the capital of Japan and is located on island of Honshu.</p>
+<p>It is one of the leading financial and economic centers of the world.</p>
+<p>Originally known as Edo, it's name was changed in 1868 to "Tokio" or "Eastern Capital".</p>
+<p>This is the view from a tower in Higashi-Shinbashi.</p>
+<br>
+<p>December 2009</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Tokyo.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Yokohama, Japan</h3>
+<p>Yokohama lies on Tokyo Bay, south of Tokyo on the island of Honshu.
+<p>It is a major port city of Japan since the mid 1800's.</p>
+<p>Its name, like many Japanese place names, is derived from geographic features - "Hama" means beach or sea-shore.
+<p>This is a view of the port.</p>
+<br>
+<p>January 2010</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Yokohama.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Harrogate, England</h3>
+<p>Harrogate is a spa town in North Yorkshire, located on the edge of the Yorkshire Dales.</p>
+<p>Its tourist attractions include its spas, gardens, and Betty's Tea Rooms.</p>
+<p>The town's name is derived from "Har-low-Gata", which means "Grey-Hill-Road".</p>
+<p>This is The Stray, an area of protected grassland.</p>
+<br>
+<p>July 2010</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Harrogate.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Knaresborough, England</h3>
+<p>Knaresborough is a historic market town on the banks of the River Nidd in North Yorkshire.</p>
+<p>It is said to have been named after its geography - "knarre" is the Anglo-Saxon term for "rocky outcrop".</p>
+<br>
+<p>July 2010</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+
+<page class="rightPage">
+<img src="images/Knaresborough.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>York, England</h3>
+<p>York is a walled city in North Yorkshire. It has many historic attractions, most notably the Gothic cathedral York Minster.</p>
+<p>The city's original Latin name was "Eboracum". This was turned into "Eoforwic" by the Anglo-Saxons, and then "Jorvik" by the Danes.</p>
+<p>This is Clifford's Tower, the keep of York Castle.</p>
+<br>
+<p>July 2010</p>
+<p>Canon Powershot A480</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/York.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Edinburgh, Scotland</h3>
+<p>Edinburgh is the capital city of Scotland. It lies on the east coast of the Central Belt.</p>
+<p>The city is well known for the Edinburgh Festival, a collection of art and cultural festivals held in August.</p>
+<p>Its name is derived from "Eidyn".</p>
+<p>This is a view of Edinburgh Castle.</p>
+<br>
+<p>July 2010</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Edinburgh.jpg">
+</page>
+
+
+
+<page class="leftPage">
+<picinfo>
+<h3>Salisbury, England</h3>
+<p>Salisbury is a city in southeast Wiltshire near the edge of the Salisbury Plain.</p>
+<p>The name possibly indicates "willow settlement" - "saule" is the French word "willow".</p>
+<p>This is Salisbury Cathedral which houses one of the four original Magna Carta's and the world's oldest working clock.</p>
+<br>
+<p>April 2011</p>
+<p>Sony Ericsson Vivaz U5i</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Salisbury.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Stonehenge, England</h3>
+<p>Stonehenge is a famous prehistoric monument in Wiltshire.It is believed to have been erected around 2500 BC.</p>
+<p>There are many theories regarding its precise function - religious center, astronomical observatory, or refuelling point for ancient alien spacecraft.</p>
+<p>Its name may have been derived from the Old English word "hencg" meaning "hinge" - implying "hinged stones".</p>
+<br>
+<p>April 2011</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Stonehenge.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Scarborough, England</h3>
+<p>Scarborough is a town located on the North Sea coast of North Yorkshire.</p>
+<p>Its high rocky cliffs separate the sea front into the North Bay and South Bay.</p>
+<p>The town's original Viking name was "Skarthborg", meaning "Skarthi's stronghold".</p>
+<p>This is a view Scarborough Castle on a cliff overlooking the North Bay.</p>
+<br>
+<p>April 2011</p>
+<p>Sony Ericsson Vivaz U5i</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Scarborough.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Inverness, Scotland</h3>
+<p>Inverness is a city in the Scottish Highlands, and the River Ness runs through it.</p>
+<p>Its Scottish-Gaelic name "Inbhir Nis" means "mouth of the River Ness".</p>
+<p>This is a view of the river.</p>
+<br>
+<p>April 2011</p>
+<p>Sony Ericsson Vivaz U5i</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Inverness.jpg">
+</page>
+
+
+<page class="leftPage">
+<picinfo>
+<h3>Loch Ness, Scotland</h3>
+<p>Loch Ness is a large freshwater lake in the Scottish Highlands.</p>
+<p>It is known for its sightings of the Loch Ness monster, or "Nessie".</p>
+<p>"Loch" is Scottish-Gaelic for "lake" and it is named after the nearby River Ness.</p>
+<p>This is Urquhart Castle on the banks of the loch, near the village of Drumnadrochit.</p>
+<br>
+<p>April 2011</p>
+<p>Sony Ericsson Vivaz U5i</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/LochNess.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<h3>Mcleodganj, India</h3>
+<p>Mcleodganj is a suburb of Dharamshala in Himachal Pradesh. It is situated on the Dhauladhar Range at an elevation of 2100 metres.</p>
+<p>The Tibetan government-in-exile is headquartered here.</p>
+<p>It was named after Sir Donald Friell McLeod, a Lieutenant Governor of Punjab, when India was a British colony.</p>
+<p>This is a path leading down to the Tibetan secretariat and museum.</p>
+<br>
+<p>July 2011</p>
+<p>Sony Cybershot DSC-S40</p>
+</picinfo>
+</page>
+
+<page class="rightPage">
+<img src="images/Mcleodganj.jpg">
+</page>
+
+<page class="leftPage">
+<picinfo>
+<p>All photos were taken by me.</p>
+<p><u>References</u></p>
+http://en.wikipedia.org
+<br>
+http://css3.bradshawenterprises.com/
+<br>
+http://www.webkit.org/blog/386/3d-transforms/
+<br>
+http://www.jquery.com/
+<br>
+http://www.modernizr.com/
+<br>
+http://www.google.com/webfonts/specimen/Architects+Daughter
+<p><u>License</u></p>
+http://creativecommons.org/licenses/by/3.0/
+</picinfo>
+</page>
+
+<backcover>
+</backcover>
+
+</div>
+
+<div id="socMedia">
+<ul>
+<li><g:plusone size="medium" href="http://www.arvindrao.in/globetrekking.html"></g:plusone>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script></li>
+
+<li><a href="http://twitter.com/share" class="twitter-share-button" data-text="Check this out!" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></li>
+
+<li><script type="IN/Share" data-url="http://www.arvindrao.in/globetrekking.html" data-counter="right"></script>
+<script src="http://platform.linkedin.com/in.js" type="text/javascript"></script></li>
+
+<li><iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.arvindrao.in%2Fglobetrekking.html&amp;send=false&amp;layout=button_count&amp;width=100&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe></li>
+
+</div>
+
+<div id="controls">
+<input type=button id="zoomIn" class="controlButtons" value="Zoom image" />
+<input type=button id="zoomOut" class="controlButtons" value="Zoom out" />
+</div>
+
+</body>
+</html>

@@ -1,0 +1,290 @@
+/*
+Author:  Arvind Rao
+Original release: ver 1-0 22/08/2011
+Last major release: ver 1-0 22/08/2011
+Last minor release: ver 1-0 22/08/2011
+License: Creative Commons Attribution 3.0 Unported License http://creativecommons.org/licenses/by/3.0/
+*/
+
+body{
+	background-color:#FFFFFF;
+	color:#26466D;
+}
+
+@-webkit-keyframes workLineAnim {
+	from {
+		width:0%;
+	}
+	to {
+		width:80%;
+	}
+}
+
+@-webkit-keyframes workTitleAnim{
+	0%{
+		opacity:0;
+	}
+	50%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+
+@-webkit-keyframes workAuthorAnim{
+	0%{
+		opacity:0;
+	}
+	66%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-webkit-keyframes workBodyAnim{
+	0%{
+		opacity:0;
+	}
+	75%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-moz-keyframes workLineAnim {
+	from {
+		width:0%;
+	}
+	to {
+		width:100%;
+	}
+}
+
+@-moz-keyframes workTitleAnim{
+	0%{
+		opacity:0;
+	}
+	50%{
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}
+
+
+@-moz-keyframes workAuthorAnim{
+	0%{
+		opacity:0;
+	}
+	66%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-moz-keyframes workBodyAnim{
+	0%{
+		opacity:0;
+	}
+	75%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+#altCanvas{
+	font-family :sans-serif;
+	font-size:12pt;
+	text-align:left;
+	color:#26466D;
+	display:none;
+}
+
+#altCanvas a:link{
+	font-family :sans-serif;
+	font-size:12pt;
+	color:#26466D;
+}
+
+#altCanvas a:visited{
+	font-family :sans-serif;
+	font-size:12pt;
+	color:#26466D;
+}
+
+#altCanvas a:hover{
+	font-family :sans-serif;
+	font-size:12pt;
+	color:#26466D;
+	font-weight:normal;
+}
+
+#workTitle{
+	height:30px;
+	width:370px;
+	font-family :sans-serif;
+	font-size:18pt;
+	color:#26466D;
+	text-align:right;
+	
+	-webkit-animation-name: workTitleAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: workTitleAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 1s;
+	-moz-animation-direction: normal;
+	
+}
+
+#workLine{
+	text-align:right;
+	color:#26466D;
+	margin-right:0;
+	width:370px;
+	-webkit-animation-name: workLineAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: workLineAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-direction: normal;
+	
+}
+
+#workAuthor{
+	height:15px;
+	width:370px;
+	font-family :sans-serif;
+	font-size:12pt;
+	font-weight:bold;
+	color:#26466D;
+	text-align:right;
+	
+	-webkit-animation-name: workAuthorAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: workAuthorAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 1.5s;
+	-moz-animation-direction: normal;
+
+}
+
+#workBody{
+	height:400px;
+	width:370px;
+	font-family :sans-serif;
+	font-size:12pt;
+	text-align:left;
+	color:#26466D;
+	position:relative;
+	
+	-webkit-animation-name: workBodyAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: workBodyAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 2s;
+	-moz-animation-direction: normal;
+	
+}
+
+#workBody a:link{
+	font-family :sans-serif;
+	font-size:12pt;
+	color:#26466D;
+}
+
+#workBody a:visited{
+	font-family :sans-serif;
+	font-size:12pt;
+	color:#26466D;
+}
+
+
+.helpButtons{
+   font-size:16px;
+   height:36px;
+   width:136px;
+   background-color: #26466D;
+   color:white;
+   margin:0px;
+   padding:0px;
+   border-style : solid;
+   border-width:1px;
+   border-color:white;
+   float:left;
+  
+}
+
+.helpButtons:hover{
+   background-color:#75A1D0;
+   color:black;
+   border-style : inset;
+}
+
+#resumeAnim{
+	display:none;
+}
+
+#pauseAnim{
+	display:none;
+}
+
+#startAnim{
+	display:block;
+}
+
+#finePrint{
+	color:#26466D;
+	font-family :sans-serif;
+	font-size:8pt;
+	position:absolute;
+	bottom:0;
+}
+
+#finePrint a:link{
+	font-family :sans-serif;
+	font-size:8pt;
+	color:#26466D;
+}
+
+#finePrint a:visited{
+	font-family :sans-serif;
+	font-size:8pt;
+	color:#26466D;
+}
+

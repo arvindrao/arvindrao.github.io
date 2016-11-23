@@ -1,0 +1,611 @@
+/*
+Author:  Arvind Rao
+Original release: ver 1-0 13/08/2011
+Last major release: ver 1-0 13/08/2011
+Last minor release: ver 1-1 18/08/2011
+License: Creative Commons Attribution 3.0 Unported License http://creativecommons.org/licenses/by/3.0/
+*/
+
+body{
+	background-color:#F0F0F0;
+}
+
+.mainScreen{
+	display:none;
+}
+
+@-webkit-keyframes headerLineAnim {
+	from {
+		width:0%;
+	}
+	to {
+		width:100%;
+	}
+}
+
+@-webkit-keyframes headerTextAnim{
+	0%{
+		opacity:0;
+	}
+	50%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+
+@-webkit-keyframes headerAuthorAnim{
+	0%{
+		opacity:0;
+	}
+	66%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-webkit-keyframes headerBodyAnim{
+	0%{
+		opacity:0;
+	}
+	75%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-moz-keyframes headerLineAnim {
+	from {
+		width:0%;
+	}
+	to {
+		width:100%;
+	}
+}
+
+@-moz-keyframes headerTextAnim{
+	0%{
+		opacity:0;
+	}
+	50%{
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}
+
+
+@-moz-keyframes headerAuthorAnim{
+	0%{
+		opacity:0;
+	}
+	66%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+@-moz-keyframes headerBodyAnim{
+	0%{
+		opacity:0;
+	}
+	75%{
+		opacity:0;
+	}
+
+	100% {
+		opacity:1;
+	}
+}
+
+#helpHeader{
+	//height:40px;
+	//width:756px;
+	font-family :sans-serif;
+	font-size:14pt;
+	padding:0px;
+	color:black;
+	background-color:#F0F0F0;
+	
+	-webkit-animation-name: headerTextAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: headerTextAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 1s;
+	-moz-animation-direction: normal;
+	
+}
+
+#helpHeaderLine{
+	text-align:right;
+	margin-right:0;
+	-webkit-animation-name: headerLineAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 0.5s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: headerLineAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 0.5s;
+	-moz-animation-direction: normal;
+	
+}
+
+#helpAuthor{
+	font-family :sans-serif;
+	font-size:10pt;
+	padding:0px;
+	color:black;
+	background-color:#F0F0F0;
+	-webkit-animation-name: headerAuthorAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: headerAuthorAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 1.5s;
+	-moz-animation-direction: normal;
+
+}
+
+#helpBody{
+	//height:500px;
+	//width:756px;
+	font-family :sans-serif;
+	font-size:10pt;
+	padding:2px;
+
+	-webkit-animation-name: headerBodyAnim;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-direction: normal;
+
+	-moz-animation-name: headerBodyAnim;
+	-moz-animation-timing-function: ease-in-out;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-duration: 2s;
+	-moz-animation-direction: normal;
+	
+}
+
+#helpBody a:link{
+	font-family :sans-serif;
+	font-size:10pt;
+	color:black;
+}
+
+#helpBody a:visited{
+	font-family :sans-serif;
+	font-size:10pt;
+	color:black;
+}
+
+#helpBody a:hover{
+	font-family :sans-serif;
+	font-size:10pt;
+	color:black;
+	font-weight:bold;
+}
+
+#helpPage{
+	height:548px;
+	width:756px;
+	font-family :sans-serif;
+}
+.helpScreen{
+	display:table;
+	
+}
+
+.headerSections{
+	background-color:#515151;
+	color:white;
+	border:0px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 10pt;
+	padding-left:1px;
+}
+#companyName {
+	background-color:#262626;
+	color:white;
+	border:0px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 12pt;	
+}
+
+#companyTicker {
+	background-color:#262626;
+	color:white;
+	border:0px;
+	padding:0px;
+	margin:0px;
+	text-align : right;
+	font-family : sans-serif;
+	font-size : 12pt;	
+}
+
+.marketDataScreen {
+	background-color:#262626;
+	color:#BDC400;
+	font-family : sans-serif;
+	font-size : 10pt;
+	border-color : white;
+	border-style : solid;
+ 	padding:0px;
+	margin:0px;	
+	border:1px;
+}
+
+.mdHeader {
+	color:white;
+}
+
+#quoteSection{
+	height: 124px;
+	width:418px;
+	padding:0px;
+	border:1px;
+	margin:0px;	
+}
+
+#upInd{
+	display:none;
+}
+
+#downInd{
+	display:none;	
+}
+
+
+#marketDepth{
+	height:123px;
+	padding:0px;
+	width:418px;
+	border:1px;
+	margin:0px;	
+}
+
+.bids{
+	color:#C0FFFF;
+	text-align : left;
+	border:0px;
+	width:100px;
+	padding:0px;
+	margin:0px;
+	font-family : sans-serif;
+	font-size : 10pt;
+	
+}
+
+.asks{
+	color:#FFB334;
+	text-align : left;
+	border:0px;
+	width:100px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 10pt;
+	
+}
+
+#trades{
+	width:338px;
+	height:248px;
+	padding:0px;
+	border:0px;
+	margin:0px;
+}
+
+#newsTicker{
+	background-color:#262626;
+	color:white;
+	font-family : sans-serif;
+	font-size : 10pt;
+	border-color : #000000;
+	border:0px
+	margin:0px;
+	height:37px;
+	width:338px;
+	padding:0px;
+}
+
+
+.playerDataScreen {
+	background-color:#262626;
+	color:#BDC400;
+	font-family : sans-serif;
+	font-size : 10pt;
+	border-color : #000000;
+	border-style : solid;
+ 	padding:0px;
+	margin:0px;	
+}
+
+
+#playerOrders{
+	width:418px;
+	height:122px;
+	padding:0px;
+	border:0px;
+	margin:0px;
+}
+
+#playerPosition{
+	font-family : sans-serif;
+	font-size : 10pt;
+	width:338px;
+	height:122px;
+	padding:0px;
+	border:0px;
+	margin:0px;	
+}
+
+#orderEntry{
+	width:418px;
+	height:122px;
+	padding:0px;
+	border:0px;
+	margin:0px;	
+}
+
+#orderEntry input{
+	text-align : left;
+	background-color : #262626;
+	font-family : sans-serif;
+	font-size : 10pt;	
+	width:100px;
+	padding:0px;
+	margin:0px;
+	border-width:1px;
+	border-color:white;
+	color:white
+}
+
+#orderEntry input.buyButton{
+	text-align : center;
+	background-color : #00A8D8;
+	font-family : sans-serif;
+	font-size : 10pt;	
+	width:100px;
+	padding:0px;
+	margin:0px;
+	color:black;
+	border-width:1px;
+	border-color:white;
+
+}
+
+#orderEntry input.buyButton:hover{
+	background-color:#009494;
+	color : white;
+	border-style:inset;
+}
+
+#orderEntry input.sellButton{
+	text-align : center;
+	background-color : #FFB334;
+	font-family : sans-serif;
+	font-size : 10pt;	
+	width:100px;
+	padding:0px;
+	margin:0px;
+	color:black;
+	border-width:1px;
+	border-color:white;
+
+}
+
+#orderEntry input.sellButton:hover{
+	background-color:#C84B00;
+	color : white;
+	border-style:inset; 
+}
+
+#alerts{
+	background-color:#262626;
+	color:white;
+	font-family : sans-serif;
+	font-size : 10pt;
+	border-color : #000000;
+	border:0px
+	margin:0px;
+	height:50px;
+	width:338px;
+	padding:0px;
+}
+
+
+#sideNav{
+	padding:0px;
+	border:0px;
+	margin:0px;	
+	height:548px;
+	width:138px;
+}
+
+#adSection{
+	padding:0px;
+	border:0px;
+	margin:0px;
+	width:138px;
+	height:476px;
+}
+
+#gameControls{
+	padding:0px;
+	border:0px;
+	margin:0px;
+	width:138px;
+	position:relative;
+	height:74px;
+}
+
+#gameControls input{
+   font-size:16px;
+   height:36px;
+   width:136px;
+   background-color:#515151;
+   color:white;
+   margin:0px;
+   padding:0px;
+   border-style : solid;
+   border-width:1px;
+   border-color:white;
+}
+
+#gameControls input:hover{
+   background-color:#D1D1D1;
+   color:black;
+   border-style : inset;
+}
+
+#pauseGame{
+	display:none;
+}
+#resumeGame{
+	display:none;
+}
+#startNewGame{
+	display:inline;
+	position:absolute;
+	bottom:0;
+}
+#helpGame{
+	display:none;
+	position:absolute;
+	bottom:0;
+}
+
+.tradeNumbers{
+	background-color:#262626;
+	color:#BDC400;
+	border:0px;
+	width:100px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 10pt;
+}
+
+
+
+.posNumbers{
+	background-color:#262626;
+	color:#BDC400;
+	border:0px;
+	width:160px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 10pt;
+}
+
+#changeFromClose{
+	background-color:#262626;
+	color:#BDC400;
+	border:0px;
+	width:140px;
+	padding:0px;
+	margin:0px;
+	text-align : left;
+	font-family : sans-serif;
+	font-size : 10pt;
+}
+.above{
+	display:table;
+}
+
+.below{
+	display:none;
+}
+
+
+.helpButtons{
+   font-size:16px;
+   height:36px;
+   width:136px;
+   background-color:#515151;
+   color:white;
+   margin:0px;
+   padding:0px;
+   border-style : solid;
+   border-width:1px;
+   border-color:white;
+   
+}
+
+.helpButtons:hover{
+   background-color:#D1D1D1;
+   color:black;
+   border-style : inset;
+}
+
+#resumeGame2{
+	display:none;
+}
+
+#finePrint{
+	background-color:#F0F0F0;
+	font-family :sans-serif;
+	font-size:8pt;
+	display:block;
+}
+
+#finePrint a:link{
+	font-family :sans-serif;
+	font-size:8pt;
+	color:black;
+}
+
+#finePrint a:visited{
+	font-family :sans-serif;
+	font-size:8pt;
+	color:black;
+}
+
+#finePrint a:hover{
+	font-family :sans-serif;
+	font-size:8pt;
+	color:black;
+}
+
+#infoMsg{
+	background-color:#F0F0F0;
+	font-family :sans-serif;
+	font-size:8pt;
+	display:none;
+}
